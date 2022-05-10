@@ -1,7 +1,15 @@
+body {
+  background-color:#949494;
+}
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
+  background-color:rgba(206,36,69,.97);
+  margin:20px;
+  border-radius:15px;
 }
-
+h2 {
+  color: white;
+}
 .no-button {
   background: none;
   border: none;
