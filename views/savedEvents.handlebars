@@ -1,0 +1,27 @@
+<div class='grid-template-rows: repeat(1, minmax(0, 1fr))'>
+  {{#if events.length}}
+    <div class='grid-rows-{1}'>
+      <h3>Saved Events:</h3>
+
+      {{#each events as |event|}}
+        <div class='grid-rows-{1}'>
+          <div class='grid-rows-{1}'>
+            <h4><a
+                href='./savedEvents.handlebars{{event.id}}'
+              >{{event.name}}</a></h4>
+            <p><a
+                href='./savedEvents.handlebars{{event.id}}'
+              >{{event.description}}</a></p>
+          </div>
+          <div class='grid-rows-{1}'>
+            <button class='' data-id='{{event.id}}'>DELETE</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<button>Events</button>
+
+<script src='./js/login.js'></script>
