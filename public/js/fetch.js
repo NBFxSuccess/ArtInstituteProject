@@ -16,7 +16,7 @@ function apiDataPull () {
         console.log(museumData);
         for (let i = 0; i < museumData.data.length; i++) {
             let pEl = document.createElement('h2');
-            pEl.innerText =museumData.data[i].title + "     "+ museumData.data[i].start_date.format('MMMM Do YYYY, h:mm:ss a');
+            pEl.innerText =museumData.data[i].title + "     "+ museumData.data[i].start_date;
             events.appendChild(pEl);
             let pEl2 = document.createElement('p');
             pEl2.innerHTML =museumData.data[i].short_description;
