@@ -2,7 +2,6 @@
 let events = document.querySelector('#events-container');
 let pageNumber = 1;
 let maxPageNumber;
-let eventData = [];
 let nextBtn = document.querySelector('#next')
 let previousBtn = document.querySelector('#previous')
 
@@ -12,19 +11,27 @@ function apiDataPull () {
     )
     .then ((response) => response.json())
     .then ((museumData) => {
+        let eventData = [];
         maxPageNumber = museumData.pagination.total_pages;
-        console.log(museumData);
         for (let i = 0; i < museumData.data.length; i++) {
-            let pEl = document.createElement('h2');
-            pEl.innerText =museumData.data[i].title + "     "+ museumData.data[i].start_date;
+            let h2El = document.createElement('h2');
+            h2El.innerText =museumData.data[i].title + "     "+ museumData.data[i].start_date;
+            events.appendChild(h2El);
+            let pEl = document.createElement('p');
+            pEl.innerHTML =museumData.data[i].short_description;
             events.appendChild(pEl);
-            let pEl2 = document.createElement('p');
-            pEl2.innerHTML =museumData.data[i].short_description;
-            events.appendChild(pEl2);
+            let eventObj = {
+                id: museumData.data[i].id, 
+                title: museumData.data[i].title,
+                despcription: museumData.data[i].short_description,
+                event_date: museumData.data[i].start_date
+            };
+            eventData.push(eventObj);
         }
         //id (not displayed)
         //title
         //short_desc
+        console.log(eventData);
     })
     }
 
