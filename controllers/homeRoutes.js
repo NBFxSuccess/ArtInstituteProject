@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Event, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/events', async (req, res) => {
   try {
     // Get all Events and JOIN with user data
     const EventData = await Event.findAll({
@@ -69,7 +69,7 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get('/', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/profile');
@@ -78,5 +78,14 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+  res.render('signup');
+});
+
 
 module.exports = router;

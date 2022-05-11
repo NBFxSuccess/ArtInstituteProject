@@ -7,22 +7,20 @@
   <title>Art Institute Planner</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    <header class="display-flex justify-space-between align-center p-2 h-20">
       <h1>
-        <span role="img" aria-label="money">🎭🖼</span>
-        <h2>Art Institute Planner</h2>
+        <h1 class="text-3xl">Art Institute Planner</h1>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
         {{/if}}
       </nav>
     </header>
