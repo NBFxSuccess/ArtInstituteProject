@@ -2,8 +2,9 @@
 let events = document.querySelector('#events-container');
 let pageNumber = 1;
 let maxPageNumber;
-let nextBtn = document.querySelector('#next')
-let previousBtn = document.querySelector('#previous')
+let nextBtn = document.querySelector('#next');
+let previousBtn = document.querySelector('#previous');
+let eventData = [];
 
 function apiDataPull () {
     fetch(
@@ -11,7 +12,7 @@ function apiDataPull () {
     )
     .then ((response) => response.json())
     .then ((museumData) => {
-        let eventData = [];
+        eventData = [];
         maxPageNumber = museumData.pagination.total_pages;
         for (let i = 0; i < museumData.data.length; i++) {
             let h2El = document.createElement('h2');
@@ -20,6 +21,11 @@ function apiDataPull () {
             let pEl = document.createElement('p');
             pEl.innerHTML =museumData.data[i].short_description;
             events.appendChild(pEl);
+            let addBtn = document.createElement('button');
+            addBtn.innerText = 'Save Event';
+            events.appendChild(addBtn);
+            addBtn.setAttribute('class','btn btn-primary mt-5 mb-5 addBtn');
+            addBtn.setAttribute('data-i',i);
             let eventObj = {
                 id: museumData.data[i].id, 
                 title: museumData.data[i].title,
@@ -27,6 +33,7 @@ function apiDataPull () {
                 event_date: museumData.data[i].start_date
             };
             eventData.push(eventObj);
+            let addButtons = document.querySelectorAll('.addBtn');
         }
         //id (not displayed)
         //title
@@ -36,17 +43,24 @@ function apiDataPull () {
     }
 
 nextBtn.addEventListener('click', function(event) {
+    events.innerHTML = '';
     if(pageNumber < maxPageNumber) {
     pageNumber ++;
-    events.innerHTML = '';
     } else (pageNumber = 1)
     apiDataPull();
 })
 previousBtn.addEventListener('click', function(event) {
-    if( 1 < pageNumber) {
-    pageNumber --
     events.innerHTML = '';
-    } else (pageNumber = maxPageNumber)
+    if( 1 < pageNumber) {
+    pageNumber --;
+    } else (pageNumber = maxPageNumber);
     apiDataPull();
 })
+
+events.addEventListener('click', function(event){
+    if (event.target.matches('button')) {
+        console.log(eventData[event.target.dataset.i])
+    }
+})
 apiDataPull();
+ 
