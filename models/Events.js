@@ -15,7 +15,7 @@ Event.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3000),
     },
     event_date: {
       type: DataTypes.DATE,
