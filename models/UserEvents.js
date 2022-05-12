@@ -6,6 +6,12 @@ class UserEvents extends Model {}
 
 UserEvents.init(
     {
+      id:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
@@ -14,7 +20,7 @@ UserEvents.init(
           key: 'id',
         },
       },
-      tag_id: {
+      event_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
         references: {

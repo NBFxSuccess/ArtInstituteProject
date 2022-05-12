@@ -17,6 +17,9 @@ Event.init(
     description: {
       type: DataTypes.STRING,
     },
+    event_date: {
+      type: DataTypes.DATE,
+    }
   },
   {
     sequelize,
