@@ -1,14 +1,17 @@
 const User = require('./Users');
 const Event = require('./Events');
+const UserEvents = require('./UserEvents');
 
 User.belongsToMany(Event, {
-  foreignKey: 'user_id',
-  through: 'user_events'
+  through: {model: UserEvents, },
+  foreignKey: 'user_id'
+
 });
 
 Event.belongsToMany(User, {
-  foreignKey: 'user_id',
-  through: 'user_events'
+  through: {model: UserEvents },
+  foreignKey: 'event_id'
+
 });
 
-module.exports = { User, Event };
+module.exports = { User, Event, UserEvents };
