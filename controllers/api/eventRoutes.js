@@ -25,6 +25,9 @@ if (dupEventCheck === null){
     res.status(400).json(err);
   }
 }
+else{
+  res.status(200)
+}
  
 });
 
