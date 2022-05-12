@@ -28,8 +28,8 @@ function apiDataPull () {
             addBtn.setAttribute('data-i',i);
             let eventObj = {
                 id: museumData.data[i].id, 
-                title: museumData.data[i].title,
-                despcription: museumData.data[i].short_description,
+                name: museumData.data[i].title,
+                description: museumData.data[i].short_description,
                 event_date: museumData.data[i].start_date
             };
             eventData.push(eventObj);
@@ -57,8 +57,33 @@ previousBtn.addEventListener('click', function(event) {
     apiDataPull();
 })
 
-events.addEventListener('click', function(event){
+events.addEventListener('click', async function(event){
     if (event.target.matches('button')) {
+        const response = await fetch(`/api/events`, {
+            method: 'POST',
+            body: JSON.stringify(eventData[event.target.dataset.i]),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+          if (response.ok) {
+              
+            const response = await fetch(`/api/events/savedEvents`, {
+                method: 'POST',
+                body: JSON.stringify({event_id: eventData[event.target.dataset.i].id }),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+              if(response.ok){
+                  console.log("savedEvents worked")
+              }
+              else{
+                  console.log("saved events didnt work")
+              }
+          } else {
+            alert('Failed to create project');
+          }
         console.log(eventData[event.target.dataset.i])
     }
 })
