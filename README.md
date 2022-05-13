@@ -1,14 +1,9 @@
 # Team Profile Generator
 
-<br>
+## Deployed Application
 
-Associated Links
+https://tranquil-island-74133.herokuapp.com/
 
-Heroku Link: https://tranquil-island-74133.herokuapp.com/
-
-GIT Repository Link: https://github.com/NBFxSuccess/ArtInstituteProject
-
-<br>
 
 ## User Story
 
@@ -32,4 +27,4 @@ Welcome to Project 2! This is yet another important milestone in your full-stack
 * CSS
 * JavaScript
 * Tailwind
-* Art Institue of Chicago API
+* Art Institute of Chicago API
