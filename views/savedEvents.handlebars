@@ -6,15 +6,8 @@
       {{#each events as |event|}}
         <div class='grid-rows-{1}'>
           <div class='grid-rows-{1}'>
-            <h4><a
-                href='./savedEvents.handlebars{{event.id}}'
-              >{{event.name}}</a></h4>
-            <p><a
-                href='./savedEvents.handlebars{{event.id}}'
-              >{{event.description}}</a></p>
-          </div>
-          <div class='grid-rows-{1}'>
-            <button class='' data-id='{{event.id}}'>DELETE</button>
+            <h4>{{event.name}}</h4>
+            {{{event.description}}}
           </div>
         </div>
       {{/each}}
